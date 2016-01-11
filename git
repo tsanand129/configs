@@ -1,0 +1,86 @@
+# commonly used git commands
+git
+
+# comprehensive list of commands
+git help --all
+
+# version
+git --version
+
+# detailed help
+git help subcommand
+git subcommand --help
+
+# create an initial repo
+mkdir dir_name
+cd dir_name
+echo 'contents' > file
+git init # turn dir_name to to git repo
+
+# add a file
+git add filename
+
+# status 
+# (staging area, after adding before commit)
+# after commit too.. but no result
+git status
+
+# commit
+git commit -m "Message" --author="name <email-id>"
+# commit if author, email-id already set
+git commit -m "Message"
+
+# git editor
+export GIT_EDITOR=vim # bash
+
+# configuring commit author
+git config user.name "username"
+git config user.email "email-id"
+	or
+export GIT_AUTHOR_NAME=username
+export GIT_AUTHOR_EMAIL=email-id
+# to set global config
+git config --global user.name "username"
+git config --global user.email "email_id"
+
+# viewing your commits
+git log
+
+# commits for current development branch
+git show-branch --more=10
+
+# vieweing commit differences
+git diff HEAD^ HEAD
+or 
+git diff HEAD~
+
+# removing file
+git rm filename
+git commit -m "removed file"
+
+# renaming a file
+git mv oldname newname
+git commit -m "renamed file"
+
+# making copy of repository or cloning
+# from parent dir of repo.
+git clone repo_name clone_name
+
+# config files
+.git/config 	# repo specific, highest precedence
+~/.gitconfig	# user specific, same as --global as above
+/etc/gitconfig	# system wide, lowest precedence
+	
+# list config
+git config -l
+# list repository specific settings
+cd ~/repo_dir
+cat .git/config
+
+# unset config option
+git config --unset --global user.email
+
+# configuring an alias
+git config --global alias.show-graph 'log --graph --abbrev-commit --pretty=oneline'
+
+
